@@ -1,0 +1,7 @@
+source images : 
+- aspirateur robot : https://www.darty.com/nav/achat/petit_electromenager/aspirateur/aspirateur_robot/irobot_combo_ess2_y051040.html
+- kit halteres : https://www.decathlon.fr/p/kit-halteres-de-musculation-20-kg-avec-disque-de-fonte-en-partie-recyclee/_/R-p-7449?mc=8018574&utm_source=google&utm_medium=sea&utm_campaign=fr_ct-shopp_t-perf_260120-aw_ts-bra_f-cv_o-roas_spu-fit_pt-pb_xx-shopping-mq-fitness-mp_&utm_term=yy-shopping-mq-fitness-mp_fitness_musculation_kit-halteres&utm_id=1499014779-193491010924&gad_source=1&gad_campaignid=1499014779&gclid=CjwKCAjw687NBhB4EiwAQ645djK-QCx77TNMk4gOhL8MoV05-lKuiLSXqM70O1S_3MerGIS09LKPZRoCOJoQAvD_BwE
+- casque bluetooth : https://www.sony.fr/headphones/products/wh-1000xm6
+Garmin : https://www.i-run.fr/electronique/Cardio-Gps_c59/Garmin_m97/Garmin-Forerunner-570_Garmin_fiche_144612.html?utm_source=google&utm_medium=cpc&utm_content=seashopping&utm_campaign=Pmax-EL-Garmin-FeedMax-Top&utm_id=21478044474&gad_source=1&gad_campaignid=21488246398&gclid=CjwKCAjwyMnNBhBNEiwA-Kcgu_JGYQ6QINWVtsp1QnAFnT155Q6B5MxiFNW16P59eQADbyjR-xjjnBoCr9IQAvD_BwE
+- enceinte : https://www.macway.com/enceinte-bluetooth-portable-jbl-charge-5-rose/p3106392 
+- photo des cerises, bot IA trouvé sur FREEp!k pour raison liberté de droit

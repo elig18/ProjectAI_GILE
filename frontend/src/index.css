@@ -1,0 +1,74 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  margin: 0;
+  font-family: 'Baskerville', 'Libre Baskerville', 'Georgia', serif;
+  background: #000000;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/*arrière-plan */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  background: rgba(173, 109, 244, 0.5);
+  border-radius: 50%;
+  filter: blur(80px);
+  transform: translate(30%, -20%);
+  z-index: -1;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 600px;
+  height: 600px;
+  background: rgba(99, 102, 238, 0.4);
+  border-radius: 50%;
+  filter: blur(100px);
+  transform: translate(-30%, 30%);
+  z-index: -1;
+}
+
+/* Titres en Baskerville */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Baskerville', 'Libre Baskerville', 'Georgia', serif;
+}
+
+/* Texte normal en Inter  */
+p, span, label, input, textarea, select, button {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animation pour les cartes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
