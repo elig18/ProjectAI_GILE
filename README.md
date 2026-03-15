@@ -154,7 +154,7 @@ Merci d'être arrivé jusqu'à la mais maintenant vous pouvez :
 
 🍒 1er site d'une entreprise fictive faite par Elisabeth GIL dans le cadre de formation - Mars 2026 
 
-[*Vidéo version 1 : j'ai corrigé le beug d'ajout d'avis :*](https://drive.google.com/file/d/1mij8JcZJxR9GP0c0QwsduKuXoH4y9OKg/view?usp=sharing)
+[*Vidéo version 1(j'ai corrigé le beug d'ajout d'avis)*](https://drive.google.com/file/d/1mij8JcZJxR9GP0c0QwsduKuXoH4y9OKg/view?usp=sharing)
 
 Ce n'est pas parfait, a pour but pédagogique
 
