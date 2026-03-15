@@ -1,3 +1,4 @@
+// src/pages/AddReview.jsx
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getProduct, createReview } from '../services/api';
@@ -36,7 +37,7 @@ function AddReview() {
 
     try {
       await createReview(id, { text: reviewText, rating });
-      alert('✅ Avis ajouté avec succès !');
+      alert('Avis ajouté, merci!');
       navigate(`/products/${id}`);
     } catch (error) {
       console.error('Erreur:', error);

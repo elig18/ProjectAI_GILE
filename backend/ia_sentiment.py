@@ -1,5 +1,5 @@
-#ia_sentiment.py
-#Module d'analyse de sentiment avec IA (modèle multilingue)
+# ia_sentiment.py
+# Module d'analyse de sentiment avec IA (modèle multilingue)
 
 from transformers import pipeline
 import logging
@@ -18,21 +18,18 @@ except Exception as e:
     logger.error(f"Erreur lors du chargement du modèle : {e}")
     sentiment_analyzer = None
 
-def analyser_sentiment(texte, rating=None):
-    """
-    Analyse le sentiment d'un texte
-    Si le score de confiance est trop bas (<0.3), utilise la note utilisateur comme fallback
-    """
+def analyser_sentiment(texte):
+    """Analyse le sentiment d'un texte"""
     if not sentiment_analyzer:
         return {'sentiment': 'neutre', 'score': 0.5}
     
     try:
         result = sentiment_analyzer(texte)[0]
-        label = result['label']  # Format: "5 stars", "1 star"
+        label = result['label']  # Format: "5 stars", "1 star", etc.
         score = result['score']
         
         # Convertir les étoiles en sentiment
-        stars = int(label.split()[0]) 
+        stars = int(label.split()[0])  # "5 stars" -> 5
         
         if stars >= 4:
             sentiment = 'positif'
@@ -41,19 +38,7 @@ def analyser_sentiment(texte, rating=None):
         else:
             sentiment = 'neutre'
         
-        # SYSTÈME HYBRIDE : Si le modèle n'est pas sûr ET qu'on a une note utilisateur
-        if score < 0.3 and rating is not None:
-            logger.info(f"Score IA trop bas ({score:.2f}), utilisation de la note utilisateur {rating}/5")
-            # Utiliser la note utilisateur comme fallback
-            if rating >= 4:
-                sentiment = 'positif'
-            elif rating <= 2:
-                sentiment = 'négatif'
-            else:
-                sentiment = 'neutre'
-            score = 0.7  # Score artificiel pour indiquer qu'on utilise le fallback
-        
-        logger.info(f"Analyse: '{texte[:50]}...' -> {sentiment} (score: {score:.2f}, rating: {rating})")
+        logger.info(f"Analyse: '{texte[:50]}...' -> {sentiment} ({score:.2f})")
         
         return {
             'sentiment': sentiment,
@@ -61,12 +46,6 @@ def analyser_sentiment(texte, rating=None):
         }
     except Exception as e:
         logger.error(f"Erreur lors de l'analyse: {e}")
-        # En cas d'erreur, utiliser la note utilisateur si disponible
-        if rating is not None:
-            if rating >= 4:
-                return {'sentiment': 'positif', 'score': 0.7}
-            elif rating <= 2:
-                return {'sentiment': 'négatif', 'score': 0.7}
         return {'sentiment': 'neutre', 'score': 0.5}
 
 def extraire_mots_cles_negatifs(avis_negatifs):

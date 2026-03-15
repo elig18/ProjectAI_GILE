@@ -50,7 +50,7 @@ def init_db():
                 print(f"Tentative analyse IA pour : {avis.text[:30]}...") 
                 try:
                     #On essaie l'IA
-                    result = analyser_sentiment(avis.text, avis.rating)
+                    result = analyser_sentiment(avis.text)
                     avis.sentiment = result['sentiment']
                     avis.sentiment_score = result['score']
                 except Exception as e:
@@ -80,11 +80,7 @@ def get_product(id):
 @app.route('/api/products', methods=['POST'])
 def create_product():
     data = request.get_json()
-    new_product = Product(
-        name=data['name'], 
-        category=data['category'], 
-        description=data.get('description', '')
-    )
+    new_product = Product(name=data['name'], category=data['category'], description=data.get('description'))
     db.session.add(new_product)
     db.session.commit()
     return jsonify(new_product.to_dict()), 201
@@ -101,38 +97,6 @@ def delete_product(id):
 def get_reviews(product_id):
     reviews = Review.query.filter_by(product_id=product_id).order_by(Review.created_at.desc()).all()
     return jsonify([r.to_dict() for r in reviews])
-
-@app.route('/api/products/<int:product_id>/reviews', methods=['POST'])
-def create_review(product_id):
-    data = request.get_json()
-    
-    # Vérifier que le produit existe
-    product = Product.query.get_or_404(product_id)
-    
-    # Analyser le sentiment avec l'IA
-    try:
-        result = analyser_sentiment(data['text'], data['rating'])
-        sentiment = result['sentiment']
-        sentiment_score = result['score']
-    except Exception as e:
-        print(f"Erreur IA : {e}")
-        # Fallback si l'IA plante
-        sentiment = "neutre"
-        sentiment_score = 0.5
-    
-    # Créer l'avis
-    new_review = Review(
-        product_id=product_id,
-        text=data['text'],
-        rating=data['rating'],
-        sentiment=sentiment,
-        sentiment_score=sentiment_score
-    )
-    
-    db.session.add(new_review)
-    db.session.commit()
-    
-    return jsonify(new_review.to_dict()), 201
 
 @app.route('/api/products/<int:product_id>/stats', methods=['GET'])
 def get_product_stats(product_id):
@@ -153,13 +117,6 @@ def get_recommendations(product_id):
     avis_negatifs = Review.query.filter_by(product_id=product_id, sentiment='négatif').all()
     recommandations = generer_recommandations([a.text for a in avis_negatifs])
     return jsonify({'recommendations': recommandations})
-
-@app.route('/api/reviews/<int:review_id>', methods=['DELETE'])
-def delete_review(review_id):
-    review = Review.query.get_or_404(review_id)
-    db.session.delete(review)
-    db.session.commit()
-    return '', 204
 
 @app.route('/')
 def home():
