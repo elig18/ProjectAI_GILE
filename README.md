@@ -91,6 +91,7 @@ PROJECTAI_GILE/
 
 ---
 # Installation du projet
+Aller dans votre terminal de VScode 
 
 ## Cloner le projet
 
